@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUBSPOT MODULE</title>
+
+    <!-- GOOGLE FONTS -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+ -->
+<!-- fontAwesomeCDN -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <section class="body">
+        <!-- stylings goes in here -->
+        <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+            .body{
+                display: grid;
+                justify-content: center;
+                font-family: 'Roboto', sans-serif;
+                /* margin: auto; */
+                /* width: 100vw !important; */
+            }
+            .bdContent{
+                /* background-color: rebeccapurple; */
+                margin: 0 !important;
+                padding: 0 !important;
+                /*  */
+                height: 100vh;
+                /*  */
+/*                 width: 600px; */
+                max-width: 100% !important;
+                z-index: 1110000;
+            }
+            .bdContent section {
+                /* background-color: red; */
+                margin: 0;
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                gap: 5px;
+            }
+            .bdContent section > *{
+                background-color: rgb(238, 238, 238);
+                margin: 0;
+                min-height: 200px;
+                border-radius: 3px;
+            }
+            .bdContent > * > *:not(:nth-child(2)){
+                padding: 10px;
+            }
+            .bdContent > * > *:nth-child(2){
+                grid-column: 2/4;
+            }
+            .btn{
+                text-decoration: none;
+                padding: 2px 5px;
+                background-color: red;
+                color: white;
+                border: none;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+          button{
+            background-color:transparent;
+            border:none;
+            outline:none;
+            color:white;
+          }
+            .bdContent footer{
+                background: rgb(2,0,36);
+                background: linear-gradient(34deg, rgba(2,0,36,1) 0%, rgba(1,23,121,1) 0%, rgba(0,60,255,1) 100%);
+                margin: 5px 0;
+                padding: 5px;
+                border-radius: 3px;
+            }
+            a{
+                text-decoration: none;
+            }
+            .center{
+                text-align: center;
+            }
+          i:not(.linkedin){
+            color:red;
+            font-size:30px;
+          }
+          
+          
+          
+            /* RESPONSIVENESS */
+            @media screen and (max-width:604px) {
+            
+
+                .body{
+                /* display: grid; */
+                display: flex;
+                /* grid-template-columns: 1fr; */
+                flex-direction: column;
+                /* border: 2px solid red; */
+
+                justify-content: center;
+                font-family: 'Roboto', sans-serif;
+                /* margin: auto; */
+                /* width: 100vw !important; */
+            }
+            .bdContent{
+                /* background-color: rebeccapurple; */
+                margin: 0 !important;
+                padding: 0 !important;
+                /*  */
+                /* height: 100vh; */
+                /* border: 3px solid green; */
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                /*  */
+                width: 600px;
+                max-width: 100% !important;
+                z-index: 1110000;
+            }
+            .bdContent section {
+                /* background-color: red; */
+                margin: 0;
+                /* display: grid;
+                grid-template-columns:1fr; */
+                display: flex;
+                flex-direction: column;
+                
+            }
+            .bdContent section > *{
+                background-color: rgb(238, 238, 238);
+                margin: 0;
+                min-height: 200px;
+                border-radius: 3px;
+            }
+            .bdContent > * > *:not(:nth-child(2)){
+                padding: 10px;
+            }
+            .bdContent > * > *:nth-child(2){
+                grid-column: 2/4;
+            }
+            .btn{
+                text-decoration: none;
+                padding: 2px 5px;
+                background-color: red;
+                color: white;
+                border: none;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+            .bdContent footer{
+                background-color: red;
+                margin: 5px 0;
+                padding: 5px;
+                border-radius: 3px;
+            }
+            a{
+                text-decoration: none;
+            }
+            .center{
+                text-align: center;
+            }
+                
+
+            }
+          
+          
+        </style>
+    
+    
+    <!-- body -->
+    <div class="bdContent">
+        <section>
+            <div style="background-color: blue; ">
+                {% if module.brand_logo.src %}
+	{% set sizeAttrs = 'width="{{ module.brand_logo.width }}" height="{{ module.brand_logo.height }}"' %}
+	{% if module.brand_logo.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.brand_logo.width }}" height="{{ module.brand_logo.height }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.brand_logo.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.brand_logo.max_width }}" height="{{ module.brand_logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.brand_logo.loading != 'disabled' ? 'loading="{{ module.brand_logo.loading }}"' : '' %}
+	<img src="{{ module.brand_logo.src }}" alt="{{ module.brand_logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+{% endif %}
+<!--                 <h3 style="color: white; font-weight: normal;">SAP Business <br> Network for <br> Supply Chain</h3> -->
+              <h3 style="color: white; font-weight: normal;">{% inline_text field="headersubtext" value="{{ module.headersubtext }}" %} </h3>
+                <h2 style="color: white;">{% inline_text field="biggersubtext" value="{{ module.biggersubtext }}" %}</h2>
+            </div>
+            <img style="height: 100%; width: 100%;" src="{{ module.headerimageurl.href }}" alt="">
+
+
+          
+          
+             <div>
+<!--                 <img src="https://img.icons8.com/ios/256/safety-collection-place.png" width="50px" alt="icon"> -->
+               <i class="fa-solid fa-people-group"></i>
+<!--                 <h3>why choose us for direct materials collaboration?</h3> -->
+                <h3>
+                  {% inline_text field="title1" value="{{ module.title1 }}" %}
+               </h3>
+                <p>{% inline_text field="text1" value="{{ module.text1 }}" %}</p>
+                <a class="btn" href=" {{ module.button1_url.href }}" target="_blank" rel="noopener noreferrer">
+                  <button>
+                    {% inline_text field="buttontext1" value="{{ module.buttontext1 }}" %}
+                  </button>
+               </a>
+              
+            </div>
+          
+          
+             <div>
+<!--                 <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/256/external-target-computer-programming-flaticons-lineal-color-flat-icons.png" width="50px" alt="icon"> -->
+               <i class="fa-solid fa-bullseye"></i>
+                <h3>
+                  {% inline_text field="title2" value="{{ module.title2 }}" %}
+               </h3>
+                <p>
+                  {% inline_text field="text2" value="{{ module.text2 }}" %}
+               </p>
+                <a class="btn" href="{{ module.button2_url.href }}" target="_blank" rel="noopener noreferrer">
+                  <button>
+                    {% inline_text field="buttontext2" value="{{ module.buttontext2 }}" %}
+                  </button>
+               </a>
+            </div>
+          
+          
+             <div>
+<!--                 <img src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/256/external-market-contact-us-flatart-icons-lineal-color-flatarticons.png" width="50px" alt="icon"> -->
+               <i class="fa-sharp fa-solid fa-house-signal"></i>
+                <h3>{% inline_text field="title3" value="{{ module.title3 }}" %}</h3>
+                <p>
+                  {% inline_text field="text3" value="{{ module.text3 }}" %}
+               </p>
+                <a class="btn" href="{{ module.button3_url.href }}" target="_blank" rel="noopener noreferrer">
+                  <button>
+                    {% inline_text field="buttontext3" value="{{ module.buttontext3 }}" %}
+                  </button>
+               </a>
+            </div>
+          
+        
+          
+             <div>
+<!--                 <img src="---" alt="icon"> -->
+               <i class="fa-solid fa-file"></i>
+                <h3>{% inline_text field="title4" value="{{ module.title4 }}" %}</h3>
+                <p>{% inline_text field="text4" value="{{ module.text4 }}" %}</p>
+                <a class="btn" href="{{ module.button4_url.href }}" target="_blank" rel="noopener noreferrer">
+                  <button>
+                    {% inline_text field="buttontext4" value="{{ module.buttontext4 }}" %}
+                  </button>
+               </a>
+            </div>
+          
+          
+             <div>
+               <i class="fa-solid fa-newspaper"></i>
+                <h3>{% inline_text field="title5" value="{{ module.title5 }}" %}</h3>
+                <p>{% inline_text field="text5" value="{{ module.text5 }}" %}</p>
+               <a class="btn" href="{{ module.button5_url.href }}" target="_blank" rel="noopener noreferrer">
+                 <button>
+                   {% inline_text field="buttontext5" value="{{ module.buttontext5 }}" %}
+                 </button>
+               </a>
+            </div>
+          
+        
+             <div>
+               <i class="fa-sharp fa-solid fa-calendar-days"></i>
+                <h3>{% inline_text field="title6" value="{{ module.title6 }}" %}</h3>
+                <p>{% inline_text field="text6" value="{{ module.text6 }}" %}</p>
+                <a class="btn" href="{{ module.button6_url.href }}" target="_blank" rel="noopener noreferrer">
+                  <button>
+                    {% inline_text field="buttontext6" value="{{ module.buttontext6 }}" %}
+                  </button>
+               </a>
+            </div>
+          
+          
+          
+         
+          
+          
+        </section>
+        <!-- footer starts -->
+        <footer style='display:flex;align-items:center;'>
+            <i class="fa-brands fa-linkedin linkedin"></i> <p style="color:white;"> follow us on</p> <a href="{{ module.linkedin_url.href }}" target="_blank" rel="noopener noreferrer" style='color:black;'> LinkedIn</a>
+        </footer>
+<div class="center">
+    {{ site_settings.company_name }}&nbsp;
+      {{ site_settings.company_street_address_1 }}&nbsp;
+      {{ site_settings.company_street_address_2 }}&nbsp;
+      {{ site_settings.company_city }}&nbsp;
+      {{ site_settings.company_state }}&nbsp;
+      {{ site_settings.company_zip }}&nbsp;
+      {{ site_settings.company_country }}&nbsp;
+        </div> 
+        <div class="center">
+            <a style="text-decoration: underline;" href="">Unsubscribe</a>
+            <a style="text-decoration: underline;" href="">Manage Preference</a>
+        </div> 
+        <!-- footer ends --> 
+    </div>
+    </section>
+    
+    <!-- 
+        Mirrored from Ademola Kehinde Pelumi (staunchngdev)
+    
+        GITHUB LINK 
+            => github.com/preciousken
+     -->
+
+
+</body>
+</html>
