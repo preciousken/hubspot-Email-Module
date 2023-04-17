@@ -14,10 +14,8 @@
 <!-- fontAwesomeCDN -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    
-    <section class="body">
-        <!-- stylings goes in here -->
+  
+      <!-- stylings goes in here -->
         <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
             .body{
@@ -69,12 +67,14 @@
           button{
             background-color:transparent;
             border:none;
+            
             outline:none;
             color:white;
           }
             .bdContent footer{
                 background: rgb(2,0,36);
-                background: linear-gradient(34deg, rgba(2,0,36,1) 0%, rgba(1,23,121,1) 0%, rgba(0,60,255,1) 100%);
+/*                 background: linear-gradient(34deg, rgba(2,0,36,1) 0%, rgba(1,23,121,1) 0%, rgba(0,60,255,1) 100%); */
+                background:#5095F9;
                 margin: 5px 0;
                 padding: 5px;
                 border-radius: 3px;
@@ -154,7 +154,7 @@
                 cursor: pointer;
             }
             .bdContent footer{
-                background-color: red;
+                background-color: #5095F9;
                 margin: 5px 0;
                 padding: 5px;
                 border-radius: 3px;
@@ -171,12 +171,16 @@
           
           
         </style>
+     <body>
+    
+    <section class="body">
+    
     
     
     <!-- body -->
     <div class="bdContent">
         <section>
-            <div style="background-color: blue; ">
+            <div style="background-color:#5095F9; ">
                 {% if module.brand_logo.src %}
 	{% set sizeAttrs = 'width="{{ module.brand_logo.width }}" height="{{ module.brand_logo.height }}"' %}
 	{% if module.brand_logo.size_type == 'auto' %}
@@ -304,10 +308,11 @@
         <div class="center">
             <a style="text-decoration: underline;" href="">Unsubscribe</a>
             <a style="text-decoration: underline;" href="">Manage Preference</a>
-        </div>
+        </div> 
         <!-- footer ends --> 
     </div>
-    </section>    
+    </section>
+    
     <!-- 
         Mirrored from Ademola Kehinde Pelumi (staunchngdev)
     
